@@ -29,4 +29,13 @@ app.get('/', async (req, res) => {
   res.send('Hello World!');
 });
 
+// Example endpoint
+app.get('/hi', async (req, res) => {
+  // Use basic logger without HTTP request info
+  logger.info({logField: 'custom-entry', arbitraryField: 'custom-entry'}); // Example of structured logging
+  // Use request-based logger with log correlation
+  req.log.info('Child logger with trace Id.'); // https://cloud.google.com/run/docs/logging#correlate-logs
+  res.send('hihihihihihihihihihihi');
+});
+
 export default app;
